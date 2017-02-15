@@ -26,18 +26,26 @@ namespace ConsoleApplication2
                 return "Empty String";
             }else
             {
-                StringBuilder strBuilder = new StringBuilder(
-                    );
-                for(int i = 1; i < charArr.Length; i++)
+                // Start with the input string. 
+                StringBuilder strBuilder = new StringBuilder(input);
+                // Have a flag variable to check for changes
+                int flag = 1;
+                // Loop over input string and delete until no changes are left. 
+                while (flag>0)
                 {
-                    if (charArr[i-1] == charArr[i])
+                    flag = 0;
+                    //Console.WriteLine(strBuilder.ToString());
+                    for (int i = 1; i < strBuilder.Length; i++)
                     {
-                        i = i + 1;
-                    }else
-                    {
-                        strBuilder.Append(charArr[i - 1]);
+                        if (strBuilder[i-1] == strBuilder[i])
+                        {
+                            //i = i + 1;
+                            strBuilder.Remove(i - 1, 2);
+                            flag = 1;
+                        }
                     }
                 }
+                
 
                 if (strBuilder.Length>0)
                 {
